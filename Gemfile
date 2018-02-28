@@ -8,15 +8,19 @@ end
 gem 'rails', '~> 5.1.0'
 gem 'sqlite3'
 gem 'devise_token_auth'
+gem 'unirest'
 
 gem 'puma', '~> 3.7'
 
 group :test do
   gem 'rspec-rails'
+  gem 'shoulda-matchers'
 end
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'factory_bot_rails'
+  gem 'pry'
 end
 
 group :development do
