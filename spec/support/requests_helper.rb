@@ -18,12 +18,16 @@ module RequestsHelper
     send(request_method, request_path, opts)
   end
 
-  def latest_incidents_fixture
+  def incidents_results_fixture
     { raw_body: [] }.to_json
   end
 
   def latest_incidents_request_path
-    "#{ENV['BIKE_INCIDENTS_ROOT']}?occurred_after=#{yesterday_timestamp}"
+    "#{incidents_root}?occurred_after=#{yesterday_timestamp}&query"
+  end
+
+  def incidents_root
+    ENV['BIKE_INCIDENTS_ROOT']
   end
 
   def yesterday_timestamp
