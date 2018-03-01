@@ -6,7 +6,7 @@ git_source(:github) do |repo_name|
 end
 
 gem 'rails', '~> 5.1.0'
-gem 'sqlite3'
+gem 'pg'
 gem 'devise_token_auth'
 gem 'unirest'
 
