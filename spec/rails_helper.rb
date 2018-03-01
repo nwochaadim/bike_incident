@@ -16,7 +16,12 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
 
   config.include FactoryBot::Syntax::Methods
-  config.include RequestsHelper, type: :request
+  config.include RequestsHelper
+
+  config.before(:each) do
+    stub_request(:get, latest_incidents_request_path).
+      to_return(body: latest_incidents_fixture)
+  end
 end
 
 Shoulda::Matchers.configure do |config|

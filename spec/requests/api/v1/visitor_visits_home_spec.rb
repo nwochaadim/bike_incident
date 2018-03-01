@@ -8,8 +8,4 @@ describe "visitor visits home" do
       expect(json_parsed_body["message"]).to match /Welcome/
     end
   end
-
-  def json_parsed_body
-    JSON.parse(response.body)
-  end
 end
