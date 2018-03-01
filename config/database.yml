@@ -1,20 +1,17 @@
 default: &default
-  encoding: unicode
+  adapter: postgresql
   pool: 5
   timeout: 5000
 
 development:
   <<: *default
-  adapter: postgresql
   database: bike_incident_dev
 
 test:
   <<: *default
-  adapter: sqlite3
-  database: db/test.sqlite3
+  database: bike_incident_test
 
 production:
   <<: *default
-  adapter: postgresql
   database: bike_incident_prod
   url: <%= ENV['DATABASE_URL'] %>
