@@ -10,7 +10,7 @@ describe "visitor sign in", type: :request do
                              password: "password")
         params = { email: "test@test.com", password: "password" }
 
-        post user_session_path, params: params, headers: headers
+        post api_v1_user_session_path, params: params, headers: headers
 
         expect(json_parsed_body["data"]).to be_present
       end
@@ -20,7 +20,7 @@ describe "visitor sign in", type: :request do
                              password: "password")
         params = { email: "test1@test.com", password: "password" }
 
-        post user_session_path, params: params, headers: headers
+        post api_v1_user_session_path, params: params, headers: headers
 
         headers = response.headers
         expect(headers["access-token"]).to be_present
@@ -33,7 +33,7 @@ describe "visitor sign in", type: :request do
                              password: "password")
         params = { email: "test@test.com", password: "wrong-password" }
 
-        post user_session_path, params: params, headers: headers
+        post api_v1_user_session_path, params: params, headers: headers
 
         expect(response.status).to eq(401)
       end
@@ -43,7 +43,7 @@ describe "visitor sign in", type: :request do
                              password: "password")
         params = { email: "test@test.com", password: "wrong-password" }
 
-        post user_session_path, params: params, headers: headers
+        post api_v1_user_session_path, params: params, headers: headers
 
         expect(json_parsed_body["errors"]).to be_present
       end

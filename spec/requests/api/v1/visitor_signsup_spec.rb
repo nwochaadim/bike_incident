@@ -3,7 +3,7 @@ require "rails_helper"
 describe "Visitor signsup spec", type: :request do
   let(:headers) { { "ACCEPT" => "application/json" } }
 
-  describe "POST /auth" do
+  describe "POST /api/v1/auth" do
     context "when successful" do
       it "creates a new user account" do
         params = { name: "Test",
@@ -11,8 +11,9 @@ describe "Visitor signsup spec", type: :request do
                    password: "password",
                    password_confirmation: "password" }
 
-        expect { post user_registration_path, params: params, headers: headers }.
-          to change{ User.count }.by(1)
+        expect {
+          post api_v1_user_registration_path, params: params, headers: headers
+        }.to change{ User.count }.by(1)
       end
 
       it "returns a success payload" do
@@ -21,7 +22,7 @@ describe "Visitor signsup spec", type: :request do
                    password: "password",
                    password_confirmation: "password" }
 
-        post user_registration_path, params: params, headers: headers
+        post api_v1_user_registration_path, params: params, headers: headers
 
         expect(json_parsed_body["status"]).to eq("success")
       end
@@ -32,7 +33,7 @@ describe "Visitor signsup spec", type: :request do
         params = { name: "Test",
                    password_confirmation: "password" }
 
-        expect { post user_registration_path, params: params, headers: headers }.
+        expect { post api_v1_user_registration_path, params: params, headers: headers }.
           to_not change{ User.count }
       end
 
@@ -40,7 +41,7 @@ describe "Visitor signsup spec", type: :request do
         params = { name: "Test",
                    password_confirmation: "password" }
 
-        post user_registration_path, params: params, headers: headers
+        post api_v1_user_registration_path, params: params, headers: headers
 
         expect(json_parsed_body["status"]).to eq("error")
       end

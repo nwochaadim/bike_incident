@@ -9,7 +9,7 @@ describe "User signs out", type: :request do
                              password: "password")
         credentials = login_user(email: "test@test.com", password: "password")
 
-        delete destroy_user_session_path, params: credentials
+        delete destroy_api_v1_user_session_path, params: credentials
 
         expect(json_parsed_body["success"]).to be_truthy
       end
@@ -20,7 +20,7 @@ describe "User signs out", type: :request do
         user = create(:user, email: "test@test.com",
                              password: "password")
 
-        delete destroy_user_session_path
+        delete destroy_api_v1_user_session_path
 
         expect(json_parsed_body["errors"]).to be_present
       end
