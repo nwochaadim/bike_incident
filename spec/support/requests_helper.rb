@@ -22,6 +22,10 @@ module RequestsHelper
     { raw_body: [] }.to_json
   end
 
+  def incident_result_fixture
+    { incident: { id: 1, title: "Obstruction" } }.to_json
+  end
+
   def latest_incidents_request_path
     "#{incidents_root}?occurred_after=#{yesterday_timestamp}&query"
   end

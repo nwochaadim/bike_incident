@@ -24,6 +24,9 @@ RSpec.configure do |config|
 
     stub_request(:get, "#{incidents_root}?query=Obstruction&occurred_after").
       to_return(body: incidents_results_fixture)
+
+    stub_request(:get, "#{incidents_root}/1").
+      to_return(body: incident_result_fixture)
   end
 end
 

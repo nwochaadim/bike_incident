@@ -5,13 +5,25 @@ module Api
       before_action :authenticate_api_v1_user!
 
       def index
-        render json: incident_results, status: :ok
+        render json: incidents_results, status: :ok
+      end
+
+      def show
+        render json: incident_result, status: :ok
       end
 
       private
 
-      def incident_results
-        IncidentFetcher.new(params).incident_results
+      def incidents_results
+        incident_fetcher.incident_results
+      end
+
+      def incident_result
+        incident_fetcher.incident_result
+      end
+
+      def incident_fetcher
+        IncidentFetcher.new(params)
       end
     end
 
