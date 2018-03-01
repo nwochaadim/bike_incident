@@ -20,7 +20,10 @@ RSpec.configure do |config|
 
   config.before(:each) do
     stub_request(:get, latest_incidents_request_path).
-      to_return(body: latest_incidents_fixture)
+      to_return(body: incidents_results_fixture)
+
+    stub_request(:get, "#{incidents_root}?query=Obstruction&occurred_after").
+      to_return(body: incidents_results_fixture)
   end
 end
 

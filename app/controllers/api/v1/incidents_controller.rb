@@ -5,13 +5,13 @@ module Api
       before_action :authenticate_api_v1_user!
 
       def index
-        render json: most_recent_incidents, status: :ok
+        render json: incident_results, status: :ok
       end
 
       private
 
-      def most_recent_incidents
-        IncidentFetcher.new.latest_incidents
+      def incident_results
+        IncidentFetcher.new(params).incident_results
       end
     end
 
