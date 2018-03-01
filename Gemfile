@@ -16,6 +16,7 @@ group :test do
   gem 'rspec-rails'
   gem 'shoulda-matchers'
   gem 'webmock', '2.3.1'
+  gem 'sqlite3'
 end
 
 group :development, :test do
