@@ -15,7 +15,7 @@ gem 'puma', '~> 3.7'
 group :test do
   gem 'rspec-rails'
   gem 'shoulda-matchers'
-  gem 'webmock'
+  gem 'webmock', '2.3.1'
 end
 
 group :development, :test do
