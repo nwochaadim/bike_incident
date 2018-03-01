@@ -15,12 +15,14 @@ gem 'puma', '~> 3.7'
 group :test do
   gem 'rspec-rails'
   gem 'shoulda-matchers'
+  gem 'webmock', '2.3.1'
 end
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'factory_bot_rails'
   gem 'pry'
+  gem 'dotenv-rails'
 end
 
 group :development do
